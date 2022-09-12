@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universe</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .bgPic {
+    background-image: linear-gradient(35deg, black, rgb(0, 0, 87), rgb(133, 10, 102), rgb(0, 0, 87), black);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    }
+    .bgPic .star {
+    position: relative;
+    background-color: white;
+    width: 7px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    }
+    .bgPic .star::before {
+    content: "";
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    filter: blur(5px);
+    }
+    .bgPic .star:nth-child(even)::before {
+    -webkit-animation: star_pulse_before 5s ease-out 5s infinite;
+            animation: star_pulse_before 5s ease-out 5s infinite;
+    }
+    .bgPic .one {
+    transform: translateY(40vh);
+    width: 8px;
+    }
+    .bgPic .two {
+    transform: translateY(-35vh);
+    }
+    .bgPic .three {
+    transform: translateY(-50vh);
+    }
+    .bgPic .four {
+    transform: translateY(30vh);
+    }
+    .bgPic .moon {
+    transform: translateY(50);
+    width: 3vw;
+    background-color: transparent;
+    transform: rotate(135deg);
+    }
+    @media (min-width: 300px) {
+    .bgPic .moon {
+        box-shadow: inset -0.7em 0.5px rgb(255, 255, 255);
+        width: 7vw;
+    }
+    }
+    @media (min-width: 700px) {
+    .bgPic .moon {
+        box-shadow: inset -0.85em 0.5px rgb(255, 255, 255);
+        width: 6vw;
+    }
+    }
+    @media (min-width: 1000px) {
+    .bgPic .moon {
+        box-shadow: inset -1em 0.5px rgb(255, 255, 255);
+        width: 4vw;
+    }
+    }
+    .bgPic .moon::before {
+    width: 100%;
+    filter: blur(35px);
+    }
+    .bgPic .moon::before {
+    width: 100%;
+    filter: blur(35px);
+    }
+    .bgPic .six {
+    transform: translateY(-40vh);
+    }
+    .bgPic .seven {
+    transform: translateY(2vh);
+    width: 4px;
+    }
+    .bgPic .eight {
+    transform: translateY(20vh);
+    width: 9px;
+    }
+    .bgPic .nine {
+    transform: translateY(40vh);
+    width: 5px;
+    }
+    .bgPic .ten {
+    transform: translateY(-20vh);
+    width: 6px;
+    }
+    .bgPic .eleven {
+    transform: translateY(-50vh);
+    width: 5px;
+    }
+    .bgPic .twelve {
+    transform: translateY(2vh);
+    width: 10px;
+    }
+    .bgPic .thirteen {
+    transform: translateX(10vw) translateY(45vh);
+    width: 9px;
+    }
+    .bgPic .fourteen {
+    transform: translateY(30vh);
+    width: 4px;
+    }
+    .bgPic .fifteen {
+    transform: translateY(-40vh);
+    width: 6px;
+    }
+    .bgPic .sixteen {
+    transform: translateY(-10vh);
+    width: 4px;
+    }
+    .bgPic .seventeen {
+    transform: translateX(3vw) translateY(30vh);
+    width: 9px;
+    }
+    .bgPic .shooting {
+    background-color: transparent;
+    width: 15vw;
+    height: 1px;
+    border-top: 1px solid rgba(255, 255, 255, 0.315);
+    border-left: 1px solid rgba(255, 255, 255, 0.767);
+    border-radius: 30%;
+    transform: rotate(45deg) translate(30vw);
+    animation: shooting_star 2.75s linear 1.5s infinite;
+    }
+    .bgPic .shooting::before {
+    display: none;
+    }
+    .bgPic .cloud {
+    position: absolute;
+    width: 80%;
+    height: 40%;
+    -webkit-animation: cloud 25s ease-in-out 1s infinite;
+            animation: cloud 25s ease-in-out 1s infinite;
+    }
+    .bgPic .cloud .blue::before, .bgPic .cloud .blue, .bgPic .cloud .pink::before, .bgPic .cloud .pink {
+    width: 80%;
+    height: 50%;
+    border-radius: 40%;
+    filter: blur(13ch);
+    transform: rotate(10deg);
+    }
+    .bgPic .cloud .blue::before, .bgPic .cloud .pink::before {
+    content: "";
+    position: absolute;
+    }
+    .bgPic .cloud .pink {
+    background-color: rgb(248, 71, 165);
+    -webkit-animation: cloud_pink 30s ease-in-out 3s infinite;
+            animation: cloud_pink 30s ease-in-out 3s infinite;
+    }
+    .bgPic .cloud .pink::before {
+    background-color: rgb(255, 55, 161);
+    transform: translateY(30vh);
+    }
+    .bgPic .cloud .blue {
+    background-color: rgba(71, 183, 248, 0.938);
+    transform: rotate(-10deg) translateX(20vw);
+    -webkit-animation: cloud_blue 45s ease-in-out 8s infinite;
+            animation: cloud_blue 45s ease-in-out 8s infinite;
+    }
+    .bgPic .cloud .blue::before {
+    background-color: rgba(71, 183, 248, 0.89);
+    transform: rotate(-10deg) translate(20vw 30vh);
+    }
+
+    @-webkit-keyframes star_pulse {
+    50% {
+        background-color: whitesmoke;
+    }
+    100% {
+        background-color: white;
+    }
+    }
+
+    @keyframes star_pulse {
+    50% {
+        background-color: whitesmoke;
+    }
+    100% {
+        background-color: white;
+    }
+    }
+    @-webkit-keyframes star_pulse_before {
+    25% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+    }
+    @keyframes star_pulse_before {
+    25% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+    }
+    @-webkit-keyframes shooting_star {
+    100% {
+        transform: translateX(-130vw) translateY(-130vw) rotate(45deg);
+    }
+    }
+    @keyframes shooting_star {
+    100% {
+        transform: translateX(-130vw) translateY(-130vw) rotate(45deg);
+    }
+    }
+    @-webkit-keyframes cloud {
+    33% {
+        translate: 2vw;
+    }
+    66% {
+        translate: -2vw;
+    }
+    100% {
+        translate: 0vw;
+    }
+    }
+    @keyframes cloud {
+    33% {
+        translate: 2vw;
+    }
+    66% {
+        translate: -2vw;
+    }
+    100% {
+        translate: 0vw;
+    }
+    }
+    @-webkit-keyframes cloud_pink {
+    25% {
+        translate: 5vw 5vw;
+    }
+    50% {
+        translate: -5vw -5vw;
+        background-color: rgb(255, 96, 34);
+    }
+    100% {
+        translate: 0vw 0vw;
+        background-color: rgb(248, 71, 165);
+    }
+    }
+    @keyframes cloud_pink {
+    25% {
+        translate: 5vw 5vw;
+    }
+    50% {
+        translate: -5vw -5vw;
+        background-color: rgb(255, 96, 34);
+    }
+    100% {
+        translate: 0vw 0vw;
+        background-color: rgb(248, 71, 165);
+    }
+    }
+    @-webkit-keyframes cloud_blue {
+    25% {
+        translate: -3vw -3vw;
+        background-color: rgba(0, 0, 255, 0.384);
+    }
+    50% {
+        translate: 3vw 3vw;
+        background-color: rgba(40, 236, 154, 0.534);
+    }
+    100% {
+        translate: 0vw 0vw;
+        background-color: rgba(71, 183, 248, 0.938);
+    }
+    }
+    @keyframes cloud_blue {
+    25% {
+        translate: -3vw -3vw;
+        background-color: rgba(0, 0, 255, 0.384);
+    }
+    50% {
+        translate: 3vw 3vw;
+        background-color: rgba(40, 236, 154, 0.534);
+    }
+    100% {
+        translate: 0vw 0vw;
+        background-color: rgba(71, 183, 248, 0.938);
+    }
+    }
+    </style>
+</head>
+<body>
+    <div class="bgPic">
+        <div class="star one"></div>
+        <div class="star two"></div>
+        <div class="star three"></div>
+        <div class="star four"></div>
+        <div class="star moon"></div>
+        <div class="star six"></div>
+        <div class="star seven"></div>
+        <div class="star eight"></div>
+        <div class="star nine"></div>
+        <div class="star ten"></div>
+        <div class="star eleven"></div>
+        <div class="star twelve"></div>
+        <div class="star thirteen"></div>
+        <div class="star fourteen"></div>
+        <div class="star fifteen"></div>
+        <div class="star sixteen"></div>
+        <div class="star seventeen"></div>
+        <div class="star shooting"></div>
+        <div class='cloud'>
+            <div class="pink"></div>
+            <div class="blue"></div>
+        </div>
+    </div>
+</body>
+</html>
